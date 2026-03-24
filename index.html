@@ -3,141 +3,452 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Melissa Zucker Style</title>
+    <title>Resume</title>
     <style>
-        /* 1. Global Styles */
-        body {
-            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
-            color: #333;
-            background-color: #ffffff;
+            box-sizing: border-box;
         }
 
-        /* 2. Header & Navigation */
-        header {
+        body {
+            font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            font-size: 11pt;
+            line-height: 1.45;
+            color: #1a1a1a;
+            background: #f5f5f0;
+        }
+
+        /* ===== PAGE CONTAINER ===== */
+        .resume-page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            padding: 25mm 22mm 20mm 22mm;
+            background: #ffffff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+            .resume-page {
+                margin: 0;
+                padding: 20mm 20mm 15mm 20mm;
+                box-shadow: none;
+                width: 100%;
+                min-height: auto;
+            }
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 2.5px solid #1a1a1a;
+        }
+
+        .profile-photo {
+            flex-shrink: 0;
+        }
+
+        .profile-photo img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #333;
+        }
+
+        /* Placeholder nếu chưa có ảnh */
+        .profile-photo .placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px dashed #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8pt;
+            color: #999;
+            text-align: center;
+            line-height: 1.2;
+            background: #fafafa;
+        }
+
+        .header-info {
+            flex: 1;
+        }
+
+        .header-info h1 {
+            font-size: 22pt;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            color: #1a1a1a;
+        }
+
+        .header-info .subtitle {
+            font-size: 11pt;
+            font-style: italic;
+            color: #444;
+            margin-bottom: 8px;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+            font-size: 9.5pt;
+            color: #333;
+        }
+
+        .contact-row span::before {
+            content: '·';
+            margin-right: 6px;
+            font-weight: bold;
+            color: #888;
+        }
+
+        .contact-row span:first-child::before {
+            content: '';
+            margin-right: 0;
+        }
+
+        .contact-row a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .contact-row a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-size: 11.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 3px;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        /* ===== ENTRIES (Experience / Education / Projects) ===== */
+        .entry {
+            margin-bottom: 12px;
+        }
+
+        .entry-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 60px 80px 40px 80px;
+            align-items: baseline;
+            flex-wrap: wrap;
         }
 
-        .logo h1 {
-            font-weight: 300;
-            letter-spacing: 12px;
-            text-transform: uppercase;
-            font-size: 2.2rem;
-            margin: 0;
+        .entry-title {
+            font-weight: 700;
+            font-size: 12pt;
         }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #666;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1.5px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #000;
-        }
-
-        /* 3. Content Area */
-        main {
-            padding: 0 80px;
-        }
-
-        .instruction {
-            font-size: 0.9rem;
-            color: #888;
+        .entry-date {
             font-style: italic;
-            margin-bottom: 30px;
+            font-size: 10pt;
+            color: #444;
+            flex-shrink: 0;
         }
 
-        /* 4. The Grid */
-        .portfolio-grid {
+        .entry-subtitle {
+            font-style: italic;
+            font-size: 10.5pt;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .entry-subtitle.project-name {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 11pt;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+
+        .entry ul {
+            margin-left: 18px;
+            margin-top: 3px;
+        }
+
+        .entry ul li {
+            margin-bottom: 2px;
+            font-size: 10.5pt;
+            line-height: 1.45;
+        }
+
+        .entry .tech-tags {
+            margin-top: 4px;
+            font-size: 9pt;
+            color: #555;
+        }
+
+        .entry .tech-tags strong {
+            color: #333;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columns */
-            gap: 20px;
-            margin-bottom: 80px;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 12px;
+            font-size: 10.5pt;
         }
 
-        .portfolio-item {
-            overflow: hidden;
-            aspect-ratio: 1 / 1; /* Makes them square */
-            background-color: #f5f5f5;
+        .skills-grid dt {
+            font-weight: 700;
+            text-align: right;
+            color: #333;
         }
 
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: opacity 0.3s ease;
+        .skills-grid dd {
+            color: #1a1a1a;
         }
 
-        .portfolio-item img:hover {
-            opacity: 0.8;
-            cursor: pointer;
+        /* ===== SUMMARY ===== */
+        .summary-text {
+            font-size: 10.5pt;
+            text-align: justify;
+            color: #222;
         }
 
-        /* Responsive Design for Mobile */
-        @media (max-width: 900px) {
-            header {
-                flex-direction: column;
-                padding: 40px 20px;
-                text-align: center;
-            }
-            nav ul {
-                margin-top: 20px;
-                gap: 15px;
-            }
-            .portfolio-grid {
-                grid-template-columns: 1fr; /* Stack on small screens */
-            }
+        /* ===== PLACEHOLDER NOTE ===== */
+        .placeholder-note {
+            border: 1px dashed #bbb;
+            border-radius: 4px;
+            padding: 14px 18px;
+            color: #999;
+            font-style: italic;
+            font-size: 10pt;
+            text-align: center;
+            margin-bottom: 12px;
+            background: #fafafa;
         }
     </style>
 </head>
 <body>
+    <div class="resume-page">
 
-    <header>
-        <div class="logo">
-            <h1>MELISSA ZUCKER</h1>
+        <!-- ==================== HEADER ==================== -->
+        <div class="header">
+            <div class="profile-photo">
+                <img src="1644637892640.jpg" alt="Profile Photo">
+            </div>
+            <div class="header-info">
+                <h1>Nguyễn Anh Khoa</h1>
+                <div class="subtitle">DevOps Engineer &amp; Infrastructure and Solutions</div>
+                <div class="contact-row">
+                    <span>Email: khoa9424@gmail.com</span>
+                    <span>Phone: +84 938 704 697</span>
+                    <span>Location: Ho Chi Minh, Viet Nam</span>
+                    <span><a href="https://www.linkedin.com/in/anh-khoa-nguy%E1%BB%85n-a38787231/">LinkedIn: linkedin.com/in/anh-khoa-nguyen/</a></span>
+                </div>
+            </div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Sketchbook</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Resume</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <p class="instruction">Click a photo to see more.</p>
+        <!-- ==================== PROFESSIONAL SUMMARY ==================== -->
+        <div class="section">
+            <div class="section-title">Professional Summary</div>
+            <p class="summary-text">
+                DevOps and Infrastructure Engineer with hands-on experience designing, deploying, and maintaining
+                production-grade on both cloud and on-premises. Proficient in Kubernetes orchestration, Infrastructure as Code,
+                CI/CD pipeline automation, and enterprise-scale GitLab administration. Adept at bridging on-premises
+                data centres with public cloud services to deliver highly available, secure, and scalable solutions. Recognized as Best Employee 2024 at
+                FORVIA HELLA Global Software House for outstanding contributions. (<a href="https://www.linkedin.com/posts/anh-khoa-nguy%E1%BB%85n-a38787231_happy-my-1-year-anniversary-at-hella-vietnam-activity-7285135657620881409-5SH7?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAADn1IQwBxw0I6qnXdQASp2z_JsBEwKhbG_A" target="_blank">Best Employee 2024</a>)
+            </p>
+        </div>
 
-        <section class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/600x600?text=Project+1" alt="Industrial Design">
-            </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/600x600?text=Project+2" alt="Fashion Design">
-            </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/600x600?text=Project+3" alt="Engineering Project">
-            </div>
-        </section>
-    </main>
+        <!-- ==================== TECHNICAL SKILLS ==================== -->
+        <div class="section">
+            <div class="section-title">Technical Skills</div>
+            <dl class="skills-grid">
+                <dt>Cloud</dt>
+                <dd>Azure, AWS</dd>
 
+                <dt>Orchestration</dt>
+                <dd>Kubernetes, Docker, containerd</dd>
+
+                <dt>IaC &amp; GitOps</dt>
+                <dd>Terraform, Ansible, Kubespray, AWX, Helm, ArgoCD GitOps</dd>
+
+                <dt>CI/CD</dt>
+                <dd>GitLab CI, Azure DevOps, Jenkins, Gerrit</dd>
+
+                <dt>AI</dt>
+                <dd>MCP, Ollama LLM, AI Agent, Prompt Engineering, RAG services</dd>
+                                
+                <dt>Data pipeline</dt>
+                <dd>Apache Airflow</dd>
+
+                <dt>Databases</dt>
+                <dd>PostgreSQL, Redis</dd>
+
+                <dt>Object Storage</dt>
+                <dd>MinIO (S3-compatible)</dd>
+
+                <dt>Monitoring</dt>
+                <dd>Grafana, Prometheus</dd>
+
+                <dt>Networking</dt>
+                <dd>Calico (Linux &amp; Windows), nginx-ingress, HNS/vSwitch</dd>
+
+                <dt>Security</dt>
+                <dd>SAML, TLS certificate management, RBAC, Harbor (private registry)</dd>
+
+                <dt>Languages</dt>
+                <dd>Bash, PowerShell, YAML, HCL, Python</dd>
+
+                <dt>API &amp; Web</dt>
+                <dd>REST API, FastAPI, WebSocket</dd>
+            </dl>
+        </div>
+
+        <!-- ==================== EXPERIENCE ==================== -->
+        <div class="section">
+            <div class="section-title">Professional Experience</div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">DevOps Engineer — Forvia Hella</span>
+                    <span class="entry-date">Jan 2024 – Present</span>
+                </div>
+                <br>
+
+                <!-- Project 1 -->
+                <div class="entry-subtitle project-name">Cloud Maintainer - GitLab Admin — Runner Infrastructure, Workspaces, CI/CD &amp; Cloud Automation</div>
+                <ul>
+                    <li>Provisioned and maintaining <strong>2 Azure AKS</strong> clusters using <strong>Terraform</strong> with separate node pools and auto-scaling to host GitLab Runners and Workspaces across Test and Production environments.</li>
+                    <li>Configured <strong>SAML</strong> single sign-on for GitLab, integrating enterprise identity with custom CA certificates and RBAC-scoped access control.</li>
+                    <li>Developed a <strong>Bucket Syncer</strong> using <strong>rclone</strong> (cron-scheduled Kubernetes jobs) to automatically replicate object storage data between MinIO instances for backup and disaster recovery.</li>
+                    <li>Developed <strong>Azure DevOps pipelines</strong> for each infrastructure component with environment-specific variable groups and secret management.</li>
+                    <li>Implemented <strong>nginx-ingress</strong> with TLS termination and custom routing rules to securely expose GitLab services while adhering to corporate network policies.</li>
+                    <li>Collaborated with cross-functional teams to troubleshoot and resolve complex issues spanning Kubernetes, GitLab, and Azure infrastructure, ensuring high availability and performance of the CI/CD platform.</li>
+                    <li>Wrote <strong>Ansible playbook</strong> to install self-hosted Gitlab Runner on Automotive hardware for Continuous Testing.</li>
+                    <li>Engineered over <strong>20+ reusable CI/CD pipeline templates</strong> with embedded business logic and integrated them across <strong>100+ Python and C++ projects</strong>, covering all stages: <strong>Analyze, Build, Test, Release, and Deploy</strong>.</li>
+                    <li>Containerized <strong>20+ in-house software applications</strong> by authoring optimized Dockerfiles and integrating them into CI/CD pipelines for automated build, scan, and deployment to <strong>Gitlab Registry</strong>.</li>
+                    <li>Built <strong>Skopeo</strong> pipelines to automate container image synchronisation from public registries (Docker Hub, Quay.io) into <strong>Harbor</strong> private registry and <strong>Azure Container Registry</strong>.</li>
+
+                </ul>
+                <div class="tech-tags">
+                    <strong>Stack:</strong> Terraform · Azure AKS · Helm 3 · GitLab Runners · GitLab Workspaces · Skopeo · Harbor · ACR · SAML · rclone · nginx-ingress · Azure DevOps Pipelines
+                </div>
+
+                <!-- Project 2 -->
+                <div class="entry-subtitle project-name" style="margin-top: 10px;">On-Premises Maintainer - Data Processor — ADAS/Radar Statistical Validation Platform</div>
+                <ul>
+                    <li>Maintaining and operating a production <strong>Hybrid Windows-Linux On-Premises Kubernetes</strong> and all helm charts.</li>
+                    <li>Working with a cross-functional team of data engineers and software engineers to support a critical data processing platform for ADAS/Radar validation.</li>
+                    <li>Adapted <strong>Kubespray</strong> for bare-metal provisioning; wrote Ansible playbooks for <strong>adding/removing Windows worker nodes</strong> and provisioning <strong>Linux GPU nodes</strong> with driver and runtime setup.</li>
+                    <li>Diagnosed and resolved a critical <strong>Calico networking failure on Windows nodes</strong> — root-caused a chain of issues including missing Hyper-V features, HNS state drift, CRLF-corrupted node names, proxy context misconfigurations, and CIDR mismatches; produced a runbook for systematic node recovery.</li>
+                    <li>Built <strong>AWX pipelines</strong> to orchestrate end-to-end cluster recovery workflows (cordon → fix → validate → uncordon) across Windows and Linux node pools.</li>
+                </ul>
+                <div class="tech-tags">
+                    <strong>Stack:</strong> Kubernetes · Kubespray · ArgoCD · Helm 3 · Airflow · Calico · Ansible AWX · GitLab CI · ELK
+                </div>
+
+                <!-- Project 3 -->
+                <div class="entry-subtitle project-name" style="margin-top: 10px;">Software Engineer - AI ChatOps — GitLab Chatbot</div>
+                <ul>
+                    <li>Designed and built (AI-assited) a <strong>microservice-based AI chatbot</strong> that enables users to interact with GitLab via natural language, leveraging the <strong>Model Context Protocol (MCP)</strong> to expose GitLab operations as callable tools.</li>
+                    <li>Hosted and configured <strong>Ollama LLM server</strong> on-premises, set up network routing and access policies, and published the service for cross-team consumption as a shared AI inference endpoint.</li>
+                    <li>Developed a <strong>FastAPI</strong> web application with <strong>REST API</strong> and <strong>WebSocket</strong> endpoints for real-time streaming chat, orchestrating communication between the browser, an <strong>Ollama LLM</strong>, and the MCP tool server.</li>
+                    <li>Implemented an <strong>MCP tool server</strong> using <strong>FastMCP</strong> and <strong>python-gitlab</strong>, exposing tools for project member management, merge request queries, artifact retrieval, release note comparison, and repository creation.</li>
+                    <li>Built intelligent <strong>query detection</strong> to selectively inject tool definitions into LLM requests, preventing hallucinated tool calls on non-GitLab prompts.</li>
+                    <li>Engineered a secure <strong>token-injection pattern</strong> where GitLab tokens remain in browser <strong>localStorage</strong> and are passed per-request — no server-side token storage.</li>
+                    <li>Containerized both services with <strong>Docker Compose</strong>, implementing health checks, dependency ordering, and internal DNS-based service discovery on a shared bridge network.</li>
+                    <li>Developed a <strong>vanilla JavaScript</strong> frontend with WebSocket streaming, auto-reconnect, conversation history management (20-message cap), and tool result visualisation.</li>
+                </ul>
+                <div class="tech-tags">
+                    <strong>Stack:</strong> Python · FastAPI · FastMCP · Ollama · python-gitlab · httpx · WebSocket · Docker Compose · Pydantic · Vanilla JS
+                </div>
+
+                <!-- Project 4 -->
+                <div class="entry-subtitle project-name" style="margin-top: 10px;">Solution Engineer — Config Manager Agent</div>
+                <ul>
+                    <li>Led the solution architecture for an <strong>AI-powered configuration agent</strong> that automatically generates low-end platform configs by correlating requirements from <strong>ALM (DNG)</strong>, source code from <strong>GitLab</strong>, and HW/SW interface constraints.</li>
+                    <li>Designed the end-to-end <strong>component architecture</strong> and data flow diagrams, defining clear boundaries between the RAG retrieval layer, MCP tool layer, and LLM reasoning engine.</li>
+                    <li>Architected a <strong>scheduled ETL pipeline on GitLab CI</strong> (hourly/nightly) to extract data from <strong>Ticket Tracking System</strong> and <strong>GitLab repositories</strong>, transform it into embeddings, and load into <strong>PostgreSQL/PGVector</strong> — keeping the vector database continuously up-to-date for the agent to query on demand.</li>
+                    <li>Designed the agent's <strong>multi-step reasoning workflow</strong>: (1) RAG-query hardware requirements from PGVector → (2) RAG-query code/templates and HW/SW interface constraints → (3) correlate all context and generate YAML config proposals with rationale — agent reads only from the vector database, never directly from source systems.</li>
+                    <li>Integrated <strong>MCP (Model Context Protocol)</strong> exclusively for <strong>write operations</strong> — the agent invokes MCP only when creating merge requests or committing generated configs to GitLab branches, keeping read concerns cleanly separated via RAG.</li>
+                    <li>Designed the <strong>RAG retrieval strategy</strong> using PGVector for semantic search across DNG requirements and HW/SW interface documentation (UART, I2C, GPIO constraints, RTOS requirements).</li>
+                </ul>
+                <div class="tech-tags">
+                    <strong>Stack:</strong> Python · PostgreSQL/PGVector · GitLab CI (ETL) · MCP · RAG · ALM/DNG · LLM · YAML
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <span class="entry-title">DevOps Engineer — Bosch Global Software Technologies</span>
+                    <span class="entry-date">Mar 2022 – Jan 2024</span>
+                </div>
+                <br>
+                <ul>
+                    <li>Delivered <strong>system administration</strong> and <strong>CI/CD automation</strong> solutions over nearly 2 years.</li>
+                    <li>Developed and maintained <strong>Jenkins pipelines</strong>, <strong>Docker containers</strong>, and automated testing workflows.</li>
+                    <li>Collaborated in <strong>Agile</strong> teams using tools such as <strong>Jira</strong>, <strong>Confluence</strong>, and <strong>Gerrit</strong>.</li>
+                    <li>Gained experience with <strong>Linux</strong> environments, <strong>Groovy</strong> scripting, and static code analysis tools like <strong>Coverity</strong>.</li>
+                </ul>
+                <div class="tech-tags">
+                    <strong>Stack:</strong> Jenkins · Docker · Linux · Shell Scripting · Python · Git · Agile · Groovy · Artifactory · Coverity
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== EDUCATION ==================== -->
+        <div class="section">
+            <div class="section-title">Education</div>
+            <div class="entry">
+                <div class="entry-header">
+                    <!-- Chỉnh sửa thông tin học vấn -->
+                    <span class="entry-title">Bachelor Degree — VNU University of Information Technology</span>
+                    <span class="entry-date">2018 – 2021</span>
+                </div>
+                <div class="entry-subtitle">Computer Science</div>
+                <!-- <ul><li>Relevant coursework, GPA, honours…</li></ul> -->
+            </div>
+        </div>
+
+        <!-- ==================== CERTIFICATIONS ==================== -->
+        <div class="section">
+            <div class="section-title">Certifications</div>
+            <div class="entry">
+                <ul>
+                    <li><strong>IELTS</strong> — Overall Band Score: <strong>7.5</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ==================== LANGUAGES ==================== -->
+        <div class="section">
+            <div class="section-title">Languages</div>
+            <div class="entry">
+                <ul>
+                    <li><strong>Vietnamese</strong> — Native</li>
+                    <li><strong>English</strong> — Native</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>
