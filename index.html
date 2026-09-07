@@ -251,7 +251,7 @@
         <!-- ==================== HEADER ==================== -->
         <div class="header">
             <div class="profile-photo">
-                <img src="https://media.licdn.com/dms/image/v2/C4E03AQEofKqcl55Yvg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1644637892640?e=1775692800&v=beta&t=OESmCDplG81dUi1_FfTcbh3rLJ2ROpyKIA3SUEulCiw" alt="Profile Photo">
+                <img src="1644637892640.jpg" alt="Profile Photo">
             </div>
             <div class="header-info">
                 <h1>Nguyễn Anh Khoa</h1>
@@ -269,10 +269,10 @@
         <div class="section">
             <div class="section-title">Professional Summary</div>
             <p class="summary-text">
-                DevOps and Infrastructure Engineer with hands-on experience designing, deploying, and maintaining
-                production-grade on both cloud and on-premises. Proficient in Kubernetes orchestration, Infrastructure as Code,
-                CI/CD pipeline automation, and enterprise-scale GitLab administration. Adept at bridging on-premises
-                data centres with public cloud services to deliver highly available, secure, and scalable solutions. Recognized as Best Employee 2024 at
+                DevOps and AI/ML Infrastructure Engineer with hands-on experience designing, deploying, and maintaining
+                production-grade AI and DevOps infrastructure for enterprises. Proficient in Kubernetes orchestration, Infrastructure as Code,
+                CI/CD pipeline automation, and enterprise-scale solutions. Adept at engineering on-premises
+                highly available, secure, and scalable solutions. Recognized as Best Employee 2024 at
                 FORVIA HELLA Global Software House for outstanding contributions. (<a href="https://www.linkedin.com/posts/anh-khoa-nguy%E1%BB%85n-a38787231_happy-my-1-year-anniversary-at-hella-vietnam-activity-7285135657620881409-5SH7?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAADn1IQwBxw0I6qnXdQASp2z_JsBEwKhbG_A" target="_blank">Best Employee 2024</a>)
             </p>
         </div>
@@ -281,44 +281,36 @@
         <div class="section">
             <div class="section-title">Technical Skills</div>
             <dl class="skills-grid">
-                <dt>Cloud</dt>
-                <dd>Azure, AWS</dd>
-
                 <dt>Orchestration</dt>
                 <dd>Kubernetes, Docker, containerd</dd>
 
                 <dt>IaC &amp; GitOps</dt>
-                <dd>Terraform, Ansible, Kubespray, AWX, Helm, ArgoCD GitOps</dd>
+                <dd>Ansible, Helm, ArgoCD</dd>
 
                 <dt>CI/CD</dt>
-                <dd>GitLab CI, Azure DevOps, Jenkins, Gerrit</dd>
+                <dd>GitLab CI, Jenkins, Gerrit</dd>
 
-                <dt>AI</dt>
-                <dd>MCP, Ollama LLM, AI Agent, Prompt Engineering, RAG services</dd>
-                                
-                <dt>Data pipeline</dt>
-                <dd>Apache Airflow</dd>
+                <dt>AI/ML</dt>
+                <dd>MCP, VLLM, OLLAMA, Agent, Apache Airflow, MS Copilot, PyTorch</dd>
 
                 <dt>Databases</dt>
-                <dd>PostgreSQL, Redis</dd>
+                <dd>PostgreSQL</dd>
 
                 <dt>Object Storage</dt>
-                <dd>MinIO (S3-compatible)</dd>
+                <dd>NFS, SMB</dd>
 
                 <dt>Monitoring</dt>
-                <dd>Grafana, Prometheus</dd>
+                <dd>ElasticSearch, Kibana, Filebeat, Metricbeat </dd>
 
                 <dt>Networking</dt>
-                <dd>Calico (Linux &amp; Windows), nginx-ingress, HNS/vSwitch</dd>
+                <dd>Calico (Linux &amp; Windows), nginx-ingress, firewall, proxy</dd>
 
                 <dt>Security</dt>
-                <dd>SAML, TLS certificate management, RBAC, Harbor (private registry)</dd>
+                <dd>Secrets management, TLS certificate management, RBAC, Harbor & Nexus (private registry)</dd>
 
                 <dt>Languages</dt>
-                <dd>Bash, PowerShell, YAML, HCL, Python</dd>
+                <dd>Bash, PowerShell, YAML, Python</dd>
 
-                <dt>API &amp; Web</dt>
-                <dd>REST API, FastAPI, WebSocket</dd>
             </dl>
         </div>
 
@@ -328,71 +320,53 @@
 
             <div class="entry">
                 <div class="entry-header">
-                    <span class="entry-title">DevOps Engineer — Forvia Hella</span>
+                    <span class="entry-title">AIDevOps Engineer — Forvia Hella</span>
                     <span class="entry-date">Jan 2024 – Present</span>
                 </div>
                 <br>
 
                 <!-- Project 1 -->
-                <div class="entry-subtitle project-name">Cloud Maintainer - GitLab Admin — Runner Infrastructure, Workspaces, CI/CD &amp; Cloud Automation</div>
+                <div class="entry-subtitle project-name">1. AI/ML Data Parallel Processing Platform - Camera Image and Car Lidar, Radar Signal</div>
                 <ul>
-                    <li>Provisioned and maintaining <strong>2 Azure AKS</strong> clusters using <strong>Terraform</strong> with separate node pools and auto-scaling to host GitLab Runners and Workspaces across Test and Production environments.</li>
-                    <li>Configured <strong>SAML</strong> single sign-on for GitLab, integrating enterprise identity with custom CA certificates and RBAC-scoped access control.</li>
-                    <li>Developed a <strong>Bucket Syncer</strong> using <strong>rclone</strong> (cron-scheduled Kubernetes jobs) to automatically replicate object storage data between MinIO instances for backup and disaster recovery.</li>
-                    <li>Developed <strong>Azure DevOps pipelines</strong> for each infrastructure component with environment-specific variable groups and secret management.</li>
-                    <li>Implemented <strong>nginx-ingress</strong> with TLS termination and custom routing rules to securely expose GitLab services while adhering to corporate network policies.</li>
-                    <li>Collaborated with cross-functional teams to troubleshoot and resolve complex issues spanning Kubernetes, GitLab, and Azure infrastructure, ensuring high availability and performance of the CI/CD platform.</li>
-                    <li>Wrote <strong>Ansible playbook</strong> to install self-hosted Gitlab Runner on Automotive hardware for Continuous Testing.</li>
-                    <li>Engineered over <strong>20+ reusable CI/CD pipeline templates</strong> with embedded business logic and integrated them across <strong>100+ Python and C++ projects</strong>, covering all stages: <strong>Analyze, Build, Test, Release, and Deploy</strong>.</li>
-                    <li>Containerized <strong>20+ in-house software applications</strong> by authoring optimized Dockerfiles and integrating them into CI/CD pipelines for automated build, scan, and deployment to <strong>Gitlab Registry</strong>.</li>
-                    <li>Built <strong>Skopeo</strong> pipelines to automate container image synchronisation from public registries (Docker Hub, Quay.io) into <strong>Harbor</strong> private registry and <strong>Azure Container Registry</strong>.</li>
-
+                    <li>Cluster administration with GitOps, IaC, least privilege and automation mindset, controlling RBAC, network policy, high-throughput storage, cert manager, and secret management.</li>
+                    <li>Ansible Kubespray to provision a scalable, highly available GPU on-premises Kubernetes with 5 control planes, 8 GPU NVIDIA A100 nodes, and 30 CPU hybrid Windows and Linux nodes.</li>
+                    <li>GitOps-focused strategic canary rollout and rollback of applications with ArgoCD, alongside integrating and deploying community Helm charts to enterprise infrastructure with more than 14 microservices, 42 deployments, 293 pods, 18 daemonsets, and 9 statefulsets.</li>
+                    <li>Design and standardize GitLab CI/CD pipelines for 3 environments—production, development, and staging including build, test, quality gates, and deployment to speed up the development process.</li>
+                    <li>AI/MLOps with model lifecycle management and Airflow DAG pipeline to perform continuous data processing with new camera image, camera, and LiDAR wave signals.</li>
+                    <li>Monitor the entire stack with Elasticsearch, Kibana, Filebeat agent and Metricbeat agent.</li>
+                    <li>Work closely with stakeholders to consult on the pros and cons of infrastructure and backend solutions, breaking features into smaller work packages.</li>
+                    <li>Engineer and create a Copilot AI agent to early warn and propose solutions for Kubernetes cluster problems.</li>
                 </ul>
                 <div class="tech-tags">
-                    <strong>Stack:</strong> Terraform · Azure AKS · Helm 3 · GitLab Runners · GitLab Workspaces · Skopeo · Harbor · ACR · SAML · rclone · nginx-ingress · Azure DevOps Pipelines
+                    <strong>Stack:</strong> Kubernetes · Ansible · Helm · ArgoCD · Airflow · Calico  · NVIDIA · GitLab · Elasticsearch · Kibana · PostgreSQL · nginx · OpenBao · NFS · Linux
                 </div>
 
                 <!-- Project 2 -->
-                <div class="entry-subtitle project-name" style="margin-top: 10px;">On-Premises Maintainer - Data Processor — ADAS/Radar Statistical Validation Platform</div>
+                <div class="entry-subtitle project-name" style="margin-top: 10px;">2. Global AIDevOps &amp; Platform Engirneering</div>
                 <ul>
-                    <li>Maintaining and operating a production <strong>Hybrid Windows-Linux On-Premises Kubernetes</strong> and all helm charts.</li>
-                    <li>Working with a cross-functional team of data engineers and software engineers to support a critical data processing platform for ADAS/Radar validation.</li>
-                    <li>Adapted <strong>Kubespray</strong> for bare-metal provisioning; wrote Ansible playbooks for <strong>adding/removing Windows worker nodes</strong> and provisioning <strong>Linux GPU nodes</strong> with driver and runtime setup.</li>
-                    <li>Diagnosed and resolved a critical <strong>Calico networking failure on Windows nodes</strong> — root-caused a chain of issues including missing Hyper-V features, HNS state drift, CRLF-corrupted node names, proxy context misconfigurations, and CIDR mismatches; produced a runbook for systematic node recovery.</li>
-                    <li>Built <strong>AWX pipelines</strong> to orchestrate end-to-end cluster recovery workflows (cordon → fix → validate → uncordon) across Windows and Linux node pools.</li>
+                    <li>VLLM Inference service provider for high-performance 131K context windows coding AI agents that saves 100$ on copilot credits per developer a month</li>
+                    <li>Designed and rolled out 20+ reusable GitLab CI/CD job and pipeline adopted by 100+ Python and C++ projects with standardized build, test, release, and deploy stages.</li>
+                    <li>Designed and rolled out MS copilot and Gitlab Duo skills to review MR and code changes efficiently.</li>
+                    <li>Containerized 20+ internal applications using optimized multi-stage Dockerfiles.</li>
+                    <li>Provided technical guidance and review for Helm chart development, ensuring compliance with Kubernetes, security, and operational best practices.</li>
+                    <li>Wrote Ansible playbooks to provision all kinds of data planes and air-gapped machines like car ECU.</li>
+                    <li>Consulting all global teams on CI/CD, Infrastructure, AI agent solutions.</li>
                 </ul>
                 <div class="tech-tags">
-                    <strong>Stack:</strong> Kubernetes · Kubespray · ArgoCD · Helm 3 · Airflow · Calico · Ansible AWX · GitLab CI · ELK
+                    <strong>Stack:</strong> GitLab · Docker · VLLM · Harbor · Ansible · Nexus · Helm · VMWares · HPC · OpenBao · NVIDIA
                 </div>
 
                 <!-- Project 3 -->
-                <div class="entry-subtitle project-name" style="margin-top: 10px;">Software Engineer - AI ChatOps — GitLab Chatbot</div>
+                <div class="entry-subtitle project-name" style="margin-top: 10px;">3. Car ECU Configuration Generator</div>
                 <ul>
-                    <li>Designed and built (AI-assited) a <strong>microservice-based AI chatbot</strong> that enables users to interact with GitLab via natural language, leveraging the <strong>Model Context Protocol (MCP)</strong> to expose GitLab operations as callable tools.</li>
-                    <li>Hosted and configured <strong>Ollama LLM server</strong> on-premises, set up network routing and access policies, and published the service for cross-team consumption as a shared AI inference endpoint.</li>
-                    <li>Developed a <strong>FastAPI</strong> web application with <strong>REST API</strong> and <strong>WebSocket</strong> endpoints for real-time streaming chat, orchestrating communication between the browser, an <strong>Ollama LLM</strong>, and the MCP tool server.</li>
-                    <li>Implemented an <strong>MCP tool server</strong> using <strong>FastMCP</strong> and <strong>python-gitlab</strong>, exposing tools for project member management, merge request queries, artifact retrieval, release note comparison, and repository creation.</li>
-                    <li>Built intelligent <strong>query detection</strong> to selectively inject tool definitions into LLM requests, preventing hallucinated tool calls on non-GitLab prompts.</li>
-                    <li>Engineered a secure <strong>token-injection pattern</strong> where GitLab tokens remain in browser <strong>localStorage</strong> and are passed per-request — no server-side token storage.</li>
-                    <li>Containerized both services with <strong>Docker Compose</strong>, implementing health checks, dependency ordering, and internal DNS-based service discovery on a shared bridge network.</li>
-                    <li>Developed a <strong>vanilla JavaScript</strong> frontend with WebSocket streaming, auto-reconnect, conversation history management (20-message cap), and tool result visualisation.</li>
+                    <li>Architectured a CPU-Only AI Agent that generates low-level car ECU configurations from Gitlab repositories, and hardware specifications.</li>
+                    <li>Designed scheduled ETL pipelines on GitLab CI to extract requirements and templates, generate embeddings, and load them into PostgreSQL/PGVector.</li>
+                    <li>Integrated MCP exclusively for write operations so the agent can safely create merge requests or commit YAML proposals.</li>
+                    <li>Built a custom MCP server with python-gitlab for member management, merge request queries, and artifact retrieval.</li>
+                    <li>Implemented secure token injection via browser localStorage to avoid server-side credential storage risks.</li>
                 </ul>
                 <div class="tech-tags">
-                    <strong>Stack:</strong> Python · FastAPI · FastMCP · Ollama · python-gitlab · httpx · WebSocket · Docker Compose · Pydantic · Vanilla JS
-                </div>
-
-                <!-- Project 4 -->
-                <div class="entry-subtitle project-name" style="margin-top: 10px;">Solution Engineer — Config Manager Agent</div>
-                <ul>
-                    <li>Led the solution architecture for an <strong>AI-powered configuration agent</strong> that automatically generates low-end platform configs by correlating requirements from <strong>ALM (DNG)</strong>, source code from <strong>GitLab</strong>, and HW/SW interface constraints.</li>
-                    <li>Designed the end-to-end <strong>component architecture</strong> and data flow diagrams, defining clear boundaries between the RAG retrieval layer, MCP tool layer, and LLM reasoning engine.</li>
-                    <li>Architected a <strong>scheduled ETL pipeline on GitLab CI</strong> (hourly/nightly) to extract data from <strong>Ticket Tracking System</strong> and <strong>GitLab repositories</strong>, transform it into embeddings, and load into <strong>PostgreSQL/PGVector</strong> — keeping the vector database continuously up-to-date for the agent to query on demand.</li>
-                    <li>Designed the agent's <strong>multi-step reasoning workflow</strong>: (1) RAG-query hardware requirements from PGVector → (2) RAG-query code/templates and HW/SW interface constraints → (3) correlate all context and generate YAML config proposals with rationale — agent reads only from the vector database, never directly from source systems.</li>
-                    <li>Integrated <strong>MCP (Model Context Protocol)</strong> exclusively for <strong>write operations</strong> — the agent invokes MCP only when creating merge requests or committing generated configs to GitLab branches, keeping read concerns cleanly separated via RAG.</li>
-                    <li>Designed the <strong>RAG retrieval strategy</strong> using PGVector for semantic search across DNG requirements and HW/SW interface documentation (UART, I2C, GPIO constraints, RTOS requirements).</li>
-                </ul>
-                <div class="tech-tags">
-                    <strong>Stack:</strong> Python · PostgreSQL/PGVector · GitLab CI (ETL) · MCP · RAG · ALM/DNG · LLM · YAML
+                    <strong>Stack:</strong> FastAPI · Python · Ollama · MCP  · GitLab · PostgreSQL/PGVector · RAG
                 </div>
             </div>
 
@@ -403,10 +377,10 @@
                 </div>
                 <br>
                 <ul>
-                    <li>Delivered <strong>system administration</strong> and <strong>CI/CD automation</strong> solutions over nearly 2 years.</li>
-                    <li>Developed and maintained <strong>Jenkins pipelines</strong>, <strong>Docker containers</strong>, and automated testing workflows.</li>
-                    <li>Collaborated in <strong>Agile</strong> teams using tools such as <strong>Jira</strong>, <strong>Confluence</strong>, and <strong>Gerrit</strong>.</li>
-                    <li>Gained experience with <strong>Linux</strong> environments, <strong>Groovy</strong> scripting, and static code analysis tools like <strong>Coverity</strong>.</li>
+                    <li>Built and managed <strong>Jenkins pipelines</strong> for multi-stage testing, containerization, and deployments.</li>
+                    <li>Authored complex <strong>Groovy shared libraries</strong> and Bash/Python scripts for CI and system administration automation.</li>
+                    <li>Integrated static analysis quality gates such as <strong>Coverity</strong> to detect vulnerabilities and memory leak risks early.</li>
+                    <li>Worked in a Scrum environment using <strong>Jira</strong>, <strong>Confluence</strong>, and <strong>Gerrit</strong> for planning, documentation, and code reviews.</li>
                 </ul>
                 <div class="tech-tags">
                     <strong>Stack:</strong> Jenkins · Docker · Linux · Shell Scripting · Python · Git · Agile · Groovy · Artifactory · Coverity
